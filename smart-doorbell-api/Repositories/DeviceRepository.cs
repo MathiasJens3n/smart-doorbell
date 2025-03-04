@@ -1,7 +1,7 @@
 ﻿using Dapper;
 using MySqlConnector;
-using smart_doorbell_api.Dto;
 using smart_doorbell_api.Factories.Interfaces;
+using smart_doorbell_api.Models;
 using smart_doorbell_api.Repositories.Interfaces;
 using System.Data;
 
@@ -17,7 +17,7 @@ namespace smart_doorbell_api.Repositories
             this.logger = logger;
             this.dbConnectionFactory = dbConnectionFactory;
         }
-        public async Task<bool> AddDevice(DeviceDTO device)
+        public async Task<bool> AddDevice(Device device)
         {
             try
             {
