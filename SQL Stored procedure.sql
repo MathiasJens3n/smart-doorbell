@@ -119,6 +119,18 @@ END $$
 
 DELIMITER ;
 
+/* Get user by username */
+DELIMITER $$
+
+CREATE PROCEDURE GetUserByUsername(
+IN p_username varchar(50)
+)
+BEGIN
+ SELECT * FROM user Where username = p_username;
+END $$
+
+DELIMITER ;
+
 SET GLOBAL event_scheduler = ON;
 
 CREATE EVENT DeleteOldImagesEvent
