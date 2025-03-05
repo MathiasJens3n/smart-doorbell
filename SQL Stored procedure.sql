@@ -4,9 +4,9 @@
 DELIMITER $$
 
 CREATE PROCEDURE AddUser(
-IN p_username VARCHAR(50),
-IN p_password VARCHAR(50),
-IN p_registration_code VARCHAR(50)
+IN p_username VARCHAR(255),
+IN p_password VARCHAR(255),
+IN p_registration_code VARCHAR(255)
 )
 BEGIN
     INSERT INTO user (username, password, registration_code) VALUE (p_username, p_password, p_registration_code);
@@ -31,8 +31,8 @@ DELIMITER $$
 
 CREATE PROCEDURE UpdateUser(
 IN p_id INT,
-IN p_username VARCHAR(50),
-IN p_password VARCHAR(50)
+IN p_username VARCHAR(255),
+IN p_password VARCHAR(255)
 )
 BEGIN
     Update user
@@ -46,8 +46,8 @@ DELIMITER ;
 DELIMITER $$
 
 CREATE PROCEDURE AddDevice(
-IN p_device_name VARCHAR(50), 
-IN p_registration_code VARCHAR(50)
+IN p_device_name VARCHAR(255), 
+IN p_registration_code VARCHAR(255)
 )
 BEGIN
     INSERT INTO device (name, registration_code) VALUE (p_device_name, p_registration_code);
@@ -61,7 +61,7 @@ DELIMITER $$
 CREATE PROCEDURE AddImage(
 IN p_data LONGBLOB, 
 IN p_file_name VARCHAR(255),
-IN p_file_type VARCHAR(50),
+IN p_file_type VARCHAR(255),
 IN p_user_id INT
 )
 BEGIN
@@ -122,7 +122,7 @@ DELIMITER ;
 DELIMITER $$
 
 CREATE PROCEDURE GetUserByUsername(
-IN p_username varchar(50)
+IN p_username varchar(255)
 )
 BEGIN
  SELECT * FROM user Where username = p_username;
