@@ -1,0 +1,18 @@
+<h1>Smart Doorbell</h1>
+
+<div class="LoginBox">
+    <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+        <div class="formGroup">
+            <div class="right">
+                <label for="Username">Brugernavn :</label>
+                <label for="Password">Kodeord :</label>
+            </div>
+            <div class="left">
+                <input type="text" id="Username" formControlName="username" placeholder="Brugernavn">
+                <input type="password" id="Password" formControlName="password" placeholder="Kodeord">
+            </div>
+        </div>
+        <input style="float: left;" type="button" class="btn" value="Opret">
+        <input style="float: right;" class="btn" type="submit" value="Login">
+    </form>
+</div>
