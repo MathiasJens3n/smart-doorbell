@@ -55,6 +55,18 @@ END $$
 
 DELIMITER ;
 
+/* Get devices */
+DELIMITER $$
+
+CREATE PROCEDURE GetDevices(
+IN p_user_id VARCHAR(255)
+)
+BEGIN
+    SELECT * FROM device WHERE Id = p_user_id;
+END $$
+
+DELIMITER ;
+
 /* Add image */
 DELIMITER $$
 
@@ -121,7 +133,7 @@ DELIMITER ;
 /* Get user by username */
 DELIMITER $$
 
-CREATE PROCEDURE GetUserByUsername(
+CREATE PROCEDURE GetUserByUsernameuser(
 IN p_username varchar(255)
 )
 BEGIN
@@ -139,6 +151,3 @@ DO
 CALL Delete30DayOld();
 
 SHOW EVENTS;
-
-
-
