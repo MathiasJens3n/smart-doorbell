@@ -25,12 +25,8 @@ CREATE TABLE device(
 CREATE TABLE image(
     Id INT NOT NULL AUTO_INCREMENT,
     data LONGBLOB NOT NULL,
-    file_name VARCHAR(255) NOT NULL,
-    file_type VARCHAR(255) NOT NULL,
     insert_date DATETIME,
     user_id INT NOT NULL,
     PRIMARY KEY (Id),
     CONSTRAINT fk_user_id FOREIGN KEY (user_id) REFERENCES user (Id)
 );
-
-
