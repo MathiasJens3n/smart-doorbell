@@ -6,11 +6,10 @@ DELIMITER $$
 CREATE PROCEDURE AddUser(
 IN p_username VARCHAR(50),
 IN p_password VARCHAR(50),
-IN p_salt VARCHAR(50),
 IN p_registration_code VARCHAR(50)
 )
 BEGIN
-    INSERT INTO user (username, password, salt, registration_code) VALUE (p_username, p_password, p_salt, p_registration_code);
+    INSERT INTO user (username, password, registration_code) VALUE (p_username, p_password, p_registration_code);
 END $$
 
 DELIMITER ;
