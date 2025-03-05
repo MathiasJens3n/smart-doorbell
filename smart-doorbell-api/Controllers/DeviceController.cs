@@ -26,7 +26,7 @@ namespace smart_doorbell_api.Controllers
 
             if (result)
             {
-                return Ok("Device added successfully.");
+                return Created();
             }
 
             return StatusCode(500, "Failed to add device.");
