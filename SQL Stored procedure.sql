@@ -4,13 +4,12 @@
 DELIMITER $$
 
 CREATE PROCEDURE AddUser(
-IN p_username VARCHAR(50),
-IN p_password VARCHAR(50),
-IN p_salt VARCHAR(50),
-IN p_registration_code VARCHAR(50)
+IN p_username VARCHAR(255),
+IN p_password VARCHAR(255),
+IN p_registration_code VARCHAR(255)
 )
 BEGIN
-    INSERT INTO user (username, password, salt, registration_code) VALUE (p_username, p_password, p_salt, p_registration_code);
+    INSERT INTO user (username, password, registration_code) VALUE (p_username, p_password, p_registration_code);
 END $$
 
 DELIMITER ;
@@ -32,8 +31,8 @@ DELIMITER $$
 
 CREATE PROCEDURE UpdateUser(
 IN p_id INT,
-IN p_username VARCHAR(50),
-IN p_password VARCHAR(50)
+IN p_username VARCHAR(255),
+IN p_password VARCHAR(255)
 )
 BEGIN
     Update user
@@ -47,11 +46,23 @@ DELIMITER ;
 DELIMITER $$
 
 CREATE PROCEDURE AddDevice(
-IN p_device_name VARCHAR(50), 
-IN p_registration_code VARCHAR(50)
+IN p_device_name VARCHAR(255), 
+IN p_registration_code VARCHAR(255)
 )
 BEGIN
     INSERT INTO device (name, registration_code) VALUE (p_device_name, p_registration_code);
+END $$
+
+DELIMITER ;
+
+/* Get devices */
+DELIMITER $$
+
+CREATE PROCEDURE GetDevices(
+IN p_user_id VARCHAR(255)
+)
+BEGIN
+    SELECT * FROM device WHERE Id = p_user_id;
 END $$
 
 DELIMITER ;
@@ -62,7 +73,7 @@ DELIMITER $$
 CREATE PROCEDURE AddImage(
 IN p_data LONGBLOB, 
 IN p_file_name VARCHAR(255),
-IN p_file_type VARCHAR(50),
+IN p_file_type VARCHAR(255),
 IN p_user_id INT
 )
 BEGIN
@@ -119,6 +130,18 @@ END $$
 
 DELIMITER ;
 
+/* Get user by username */
+DELIMITER $$
+
+CREATE PROCEDURE GetUserByUsernameuser(
+IN p_username varchar(255)
+)
+BEGIN
+ SELECT * FROM user Where username = p_username;
+END $$
+
+DELIMITER ;
+
 SET GLOBAL event_scheduler = ON;
 
 CREATE EVENT DeleteOldImagesEvent
@@ -128,6 +151,3 @@ DO
 CALL Delete30DayOld();
 
 SHOW EVENTS;
-
-
-
