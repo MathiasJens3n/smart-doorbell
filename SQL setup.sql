@@ -8,7 +8,6 @@ CREATE TABLE user(
     Id INT NOT NULL AUTO_INCREMENT,
     username VARCHAR(50) NOT NULL,
     password VARCHAR(50) NOT NULL,
-    salt VARCHAR(50) NOT NULL,
     registration_code VARCHAR(50) NOT NULL UNIQUE,
     PRIMARY KEY (Id)
 );
@@ -33,4 +32,5 @@ CREATE TABLE image(
     PRIMARY KEY (Id),
     CONSTRAINT fk_user_id FOREIGN KEY (user_id) REFERENCES user (Id)
 );
+
 
