@@ -59,10 +59,17 @@ DELIMITER ;
 DELIMITER $$
 
 CREATE PROCEDURE GetDevices(
-IN p_user_id VARCHAR(255)
+    IN p_user_id VARCHAR(255)
 )
 BEGIN
-    SELECT * FROM device WHERE Id = p_user_id;
+    -- Declare a variable to store the registration code
+    DECLARE p_registration_code VARCHAR(255);
+    
+    -- Get the registration code for the user
+    SELECT registration_code INTO registration_code FROM user WHERE id = p_user_id;
+    
+    -- Get devices based on the registration code
+    SELECT * FROM device WHERE registration_code = p_registration_code;
 END $$
 
 DELIMITER ;
