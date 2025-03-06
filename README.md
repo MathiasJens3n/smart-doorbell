@@ -1,1 +1,1 @@
-Lars is a angular retard
+Lars is a angular Legend.
