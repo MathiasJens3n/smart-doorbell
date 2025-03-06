@@ -33,7 +33,7 @@ namespace smart_doorbell_api.Services
             {
                 Username = login.Username,
                 Password = PasswordHasher.HashPassword(login.Password),
-                RegistrationCode = Guid.NewGuid().ToString("N").Substring(0, 10).ToUpper()
+                Registration_Code = Guid.NewGuid().ToString("N").Substring(0, 10).ToUpper()
             };
 
             return await userRepository.AddAsync(user);

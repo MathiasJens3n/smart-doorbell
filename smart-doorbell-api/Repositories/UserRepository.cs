@@ -28,7 +28,7 @@ namespace smart_doorbell_api.Repositories
                 {
                     p_username = user.Username,
                     p_password = user.Password,
-                    p_registration_code = user.RegistrationCode
+                    p_registration_code = user.Registration_Code
                 };
 
                 int rowsAffected = await connection.ExecuteAsync("AddUser", parameters, commandType: CommandType.StoredProcedure);

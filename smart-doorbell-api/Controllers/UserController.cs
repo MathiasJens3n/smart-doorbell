@@ -4,6 +4,7 @@ using Microsoft.IdentityModel.JsonWebTokens;
 using smart_doorbell_api.Dto;
 using smart_doorbell_api.Models;
 using smart_doorbell_api.Services;
+using smart_doorbell_api.Tools;
 using System.Security.Claims;
 
 namespace smart_doorbell_api.Controllers
@@ -26,24 +27,21 @@ namespace smart_doorbell_api.Controllers
         }
 
         /// <summary>
-        /// Retrieves user information based on the provided user ID.
-        /// Ensures that a user can only access their own data.
+        /// Retrieves the authenticated user's information.
         /// </summary>
-        /// <param name="id">The unique identifier of the user.</param>
-        /// <returns>Returns the user details if found; otherwise, returns a 404 error or access is denied.</returns>
-
-        [HttpGet("{id}")]
-        public async Task<IActionResult> GetUserAsync(int id)
+        /// <returns>Returns the user's details if found; otherwise, returns an unauthorized or not found response.</returns>
+        [HttpGet]
+        [Authorize]
+        public async Task<IActionResult> GetUserAsync()
         {
-            var userIdFromToken = int.Parse(User.FindFirst(ClaimTypes.NameIdentifier)?.Value ?? "0");
+            int userIdFromToken = UserHelper.GetUserIdFromToken(HttpContext);
 
-            // Deny access if user tries to access another user's data
-            if (userIdFromToken != id)
+            if (userIdFromToken == -1)
             {
-                return Forbid();
+                return Unauthorized("Invalid or missing user token.");
             }
 
-            var user = await userService.GetUserByIdAsync(id);
+            var user = await userService.GetUserByIdAsync(userIdFromToken);
 
             if (user == null)
             {
@@ -54,29 +52,27 @@ namespace smart_doorbell_api.Controllers
         }
 
         /// <summary>
-        /// Updates user information.
-        /// Ensures that a user can only update their own profile.
+        /// Updates the authenticated user's information.
         /// </summary>
-        /// <param name="userDto">The user data transfer object containing updated user information.</param>
-        /// <returns>Returns a success message if updated successfully; otherwise, returns an error status.</returns>
-
-        [HttpPut("{id}")]
-        public async Task<IActionResult> UpdateUserAsync(int id, [FromBody]UserDTO userDto)
+        /// <param name="userDto">The user data transfer object containing the updated information.</param>
+        /// <returns>Returns a no-content response if successful, a not found response if the user does not exist, or an error response if the request is invalid.</returns>
+        [HttpPut]
+        [Authorize]
+        public async Task<IActionResult> UpdateUserAsync([FromBody]UserDTO userDto)
         {
+            int userIdFromToken = UserHelper.GetUserIdFromToken(HttpContext);
+
+            if (userIdFromToken == -1)
+            {
+                return Unauthorized("Invalid or missing user token.");
+            }
+
             if (userDto == null)
             {
                 return BadRequest("User data is required.");
             }
 
-            var userIdFromToken = int.Parse(User.FindFirst(ClaimTypes.NameIdentifier)?.Value ?? "0");
-
-            // Deny access if user tries to access another user's data
-            if (userIdFromToken != id)
-            {
-                return Forbid();
-            }
-
-            var result = await userService.UpdateUserAsync(id, userDto);
+            var result = await userService.UpdateUserAsync(userIdFromToken, userDto);
 
             if (result == false)
             {
