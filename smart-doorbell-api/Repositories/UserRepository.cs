@@ -81,7 +81,7 @@ namespace smart_doorbell_api.Repositories
                 var parameters = new { p_username = username };
 
                 return await connection.QueryFirstOrDefaultAsync<User>(
-                    "GetUserByUsername",
+                    "GetUserByUsernameuser",
                     parameters,
                     commandType: CommandType.StoredProcedure
                 );
