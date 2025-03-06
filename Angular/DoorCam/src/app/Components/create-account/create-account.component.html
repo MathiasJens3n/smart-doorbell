@@ -1,7 +1,7 @@
 <h1>Smart Doorbell</h1>
 
 <div class="FormContainer">
-    <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+    <form [formGroup]="accountForm" (ngSubmit)="onSubmit()">
         <div class="formGroup">
             <div class="right">
                 <label for="Username">Brugernavn :</label>
@@ -10,6 +10,7 @@
             <div class="left">
                 <input type="text" id="Username" formControlName="username" placeholder="Brugernavn">
                 <input type="password" id="Password" formControlName="password" placeholder="Kodeord">
+                <input type="password" id="Password" formControlName="password2" placeholder="Kodeord">
             </div>
         </div>
         <input style="float: left;" type="button" class="btn" value="Opret">
