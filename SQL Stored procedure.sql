@@ -66,13 +66,23 @@ BEGIN
     DECLARE p_registration_code VARCHAR(255);
     
     -- Get the registration code for the user
-    SELECT registration_code INTO registration_code FROM user WHERE id = p_user_id;
+    SELECT registration_code INTO p_registration_code 
+    FROM user 
+    WHERE id = p_user_id;
     
-    -- Get devices based on the registration code
-    SELECT * FROM device WHERE registration_code = p_registration_code;
+    -- Check if registration code was found
+    IF p_registration_code IS NULL THEN
+        -- If no registration code is found, return a message or handle it as needed
+        SIGNAL SQLSTATE '45000' SET MESSAGE_TEXT = 'User not found or no registration code associated with user.';
+    ELSE
+        -- Get devices based on the registration code
+        SELECT * FROM device WHERE registration_code = p_registration_code;
+    END IF;
 END $$
 
 DELIMITER ;
+
+
 
 /* Add image */
 DELIMITER $$
@@ -158,3 +168,6 @@ DO
 CALL Delete30DayOld();
 
 SHOW EVENTS;
+
+
+
