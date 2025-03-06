@@ -58,6 +58,8 @@ builder.Services.AddScoped<DeviceService>();
 builder.Services.AddScoped<IUserRepository, UserRepository>();
 builder.Services.AddScoped<UserService>();
 builder.Services.AddScoped<AuthService>();
+builder.Services.AddScoped<IImageRepository, ImageRepository>();
+builder.Services.AddScoped<ImageService>();
 
 
 var app = builder.Build();
