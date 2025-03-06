@@ -92,7 +92,7 @@ IN p_data LONGBLOB,
 IN p_user_id INT
 )
 BEGIN
-    INSERT INTO image (data, inser_date, user_id) VALUE (p_data, DATETIME.NOW, p_user_id);
+    INSERT INTO image (data, inser_date, user_id) VALUE (p_data, NOW(), p_user_id);
 END $$
 
 DELIMITER ;
