@@ -7,12 +7,14 @@ import { AppComponent } from './app.component';
 import { LoginComponent } from './Components/login/login.component';
 import { HttpClientModule } from '@angular/common/http';
 import { CreateAccountComponent } from './Components/create-account/create-account.component';
+import { ImageGalleryComponent } from './Components/image-gallery/image-gallery.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     LoginComponent,
     CreateAccountComponent,
+    ImageGalleryComponent,
     
   ],
   imports: [

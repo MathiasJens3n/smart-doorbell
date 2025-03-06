@@ -1,6 +1,6 @@
 /* Two-column layout for the create form */
 .FormContainer {
-    width: 60vw; /* 50% of viewport width */
+    width: 80vw; /* 50% of viewport width */
     height: auto;
     background-color: #278CBB; /* Light blue background */
     margin: 0 auto; /* Center horizontally */

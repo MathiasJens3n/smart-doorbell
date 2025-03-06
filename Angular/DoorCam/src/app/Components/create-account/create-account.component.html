@@ -6,6 +6,7 @@
             <div class="right">
                 <label for="Username">Brugernavn :</label>
                 <label for="Password">Kodeord :</label>
+                <label for="Password">Bekræft kodeord :</label>
             </div>
             <div class="left">
                 <input type="text" id="Username" formControlName="username" placeholder="Brugernavn">
@@ -13,7 +14,7 @@
                 <input type="password" id="Password" formControlName="password2" placeholder="Kodeord">
             </div>
         </div>
-        <input style="float: left;" type="button" class="btn" value="Opret">
-        <input style="float: right;" class="btn" type="submit" value="Login">
+        <input style="float: left;" type="button" class="btn" value="Anuller" (click)="Login()" >
+        <input style="float: right;" class="btn" type="submit" value="Opret konto">
     </form>
 </div>

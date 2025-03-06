@@ -51,4 +51,8 @@ export class LoginComponent implements OnInit {
     this.loginService.postLogin(username, password).subscribe(observer);
 
   }
+
+  Create_account() {
+    this.router.navigate(['/create-account']);
+  }
 }

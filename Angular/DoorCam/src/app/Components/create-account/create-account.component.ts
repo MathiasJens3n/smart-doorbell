@@ -54,4 +54,8 @@ export class CreateAccountComponent {
     this.createAccountService.postAccount(username, password).subscribe(observer);
 
   }
+
+  Login() {
+    this.router.navigate(['/login']);
+  }
 }

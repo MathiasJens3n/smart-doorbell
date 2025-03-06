@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes, CanActivateFn, Router } from '@angular/router';
 import { LoginComponent } from './Components/login/login.component';
 import { CreateAccountComponent } from './Components/create-account/create-account.component';
+import { ImageGalleryComponent } from './Components/image-gallery/image-gallery.component';
 
 // Function to check for 'Token' cookie
 const checkAuth: CanActivateFn = () => {
@@ -16,7 +17,7 @@ const routes: Routes = [
     path: 'Components',
     canActivate: [checkAuth],  // Use function to protect routes
     children: [
-      //{ path: 'menu', component: MenuComponent },
+      { path: 'menu', component: ImageGalleryComponent },
     ],
   },
   { path: '', redirectTo: 'login', pathMatch: 'full' },  // Default to login if no route is matched
