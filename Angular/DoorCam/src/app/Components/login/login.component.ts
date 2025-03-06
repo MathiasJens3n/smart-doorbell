@@ -38,7 +38,7 @@ export class LoginComponent implements OnInit {
         console.log('Login successful', response);
 
         // Trigger navigation to protected route after successful login
-        self.router.navigate(['/Components/']);
+        self.router.navigate(['/components/gallery']);
       },
       error(error: any) {
         // Handle login error here

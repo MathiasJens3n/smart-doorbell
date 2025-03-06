@@ -14,10 +14,10 @@ const routes: Routes = [
   { path: 'login', component: LoginComponent },
   { path: 'create-account', component: CreateAccountComponent },
   {
-    path: 'Components',
+    path: 'components',
     canActivate: [checkAuth],  // Use function to protect routes
     children: [
-      { path: 'menu', component: ImageGalleryComponent },
+      { path: 'gallery', component: ImageGalleryComponent },
     ],
   },
   { path: '', redirectTo: 'login', pathMatch: 'full' },  // Default to login if no route is matched
