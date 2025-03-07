@@ -82,5 +82,32 @@ namespace smart_doorbell_api.Controllers
             return NoContent();
 
         }
+
+        /// <summary>
+        /// Registers or updates the FCM token for push notifications.
+        /// </summary>
+        /// <param name="fcmTokenDto">The FCM token data transfer object.</param>
+        /// <returns>HTTP 200 if successful, HTTP 400 if the token is invalid.</returns>
+        [HttpPost("register-fcm-token")]
+        [Authorize]
+        public async Task<IActionResult> RegisterFcmToken([FromBody] FcmTokenDto fcmTokenDto)
+        {
+            int userId = UserHelper.GetUserIdFromToken(HttpContext);
+
+            if (string.IsNullOrEmpty(fcmTokenDto.Token))
+            {
+                return BadRequest("Invalid token.");
+            }
+
+            bool success = await userService.AddFcmTokenAsync(userId, fcmTokenDto);
+
+            if (!success)
+            {
+                return StatusCode(500, "Error saving token.");
+            }
+
+            return Ok();
+        }
     }
 }
+

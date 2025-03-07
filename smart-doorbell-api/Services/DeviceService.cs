@@ -38,7 +38,7 @@ namespace smart_doorbell_api.Services
             // Convert DTO to Domain Model
             var device = new Device
             {
-                RegistrationCode = deviceDto.RegistrationCode
+                Registration_Code = deviceDto.RegistrationCode
             };
 
             return await deviceRepository.AddDevice(device);

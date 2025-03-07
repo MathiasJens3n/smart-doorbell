@@ -16,10 +16,12 @@ namespace smart_doorbell_api.Controllers
     public class ImageController : ControllerBase
     {
         private readonly ImageService imageService;
+        private readonly NotificationService notificationService;
 
-        public ImageController(ImageService imageService)
+        public ImageController(ImageService imageService, NotificationService notificationService)
         {
             this.imageService = imageService;
+            this.notificationService = notificationService;
         }
 
         /// <summary>
@@ -41,6 +43,9 @@ namespace smart_doorbell_api.Controllers
             {
                 return StatusCode(500, "Error adding image.");
             }
+
+            // Send a push notification
+            await notificationService.SendPushNotificationAsync(imageDto.UserId, "Doorbell Pressed", "Someone is at your door!");
 
             return Created();
         }
