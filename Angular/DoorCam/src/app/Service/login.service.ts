@@ -7,7 +7,7 @@ import { Login } from '../Interfaces/login';
   providedIn: 'root'
 })
 export class LoginService {
-  url: string = "https://localhost:8443/auth";
+  url: string = "http://localhost:5000/auth";
   endpointLogin: string = "login"; // API endpoint
 
   constructor(private httpClient: HttpClient) {}
@@ -22,10 +22,11 @@ export class LoginService {
         tap((response: any) => {
           if (response.token) {
             // Store the JWT token in session storage
-            sessionStorage.setItem('jwtToken', response.token);
+            sessionStorage.setItem('Token', response.token);
             
           }
         })
       );
   }
 }
+

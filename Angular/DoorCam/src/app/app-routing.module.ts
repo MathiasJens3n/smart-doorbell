@@ -6,9 +6,10 @@ import { ImageGalleryComponent } from './Components/image-gallery/image-gallery.
 
 // Function to check for 'Token' cookie
 const checkAuth: CanActivateFn = () => {
-  const token = document.cookie.split('; ').find(row => row.startsWith('Token='));
-  return !!token;  // Returns true if 'Token' cookie is present, otherwise false
+  const token = sessionStorage.getItem('Token');
+  return !!token;  // Returns true if 'Token' is present, otherwise false
 };
+
 
 const routes: Routes = [
   { path: 'login', component: LoginComponent },
