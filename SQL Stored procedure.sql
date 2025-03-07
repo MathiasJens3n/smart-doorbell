@@ -46,8 +46,7 @@ DELIMITER ;
 DELIMITER $$
 
 CREATE PROCEDURE AddDevice(
-    IN p_device_name VARCHAR(255), 
-    IN p_registration_code VARCHAR(255),
+    IN p_registration_code VARCHAR(255)
     OUT p_user_id INT
 )
 BEGIN
