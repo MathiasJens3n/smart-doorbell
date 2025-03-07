@@ -51,7 +51,7 @@ CREATE PROCEDURE AddDevice(
 )
 BEGIN
     -- Insert the device
-    INSERT INTO device (name, registration_code) VALUES (p_device_name, p_registration_code);
+    INSERT INTO device (name, registration_code) VALUES ('new device', p_registration_code);
 
     -- Fetch the user_id associated with this registration_code
     SELECT Id INTO p_user_id FROM user WHERE registration_code = p_registration_code LIMIT 1;
