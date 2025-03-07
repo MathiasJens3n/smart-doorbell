@@ -89,12 +89,10 @@ DELIMITER $$
 
 CREATE PROCEDURE AddImage(
 IN p_data LONGBLOB, 
-IN p_file_name VARCHAR(255),
-IN p_file_type VARCHAR(255),
 IN p_user_id INT
 )
 BEGIN
-    INSERT INTO image (data, file_name, file_type, inser_date, user_id) VALUE (p_data, p_file_name, p_file_type, DATETIME.NOW, p_user_id);
+    INSERT INTO image (data, inser_date, user_id) VALUE (p_data, NOW(), p_user_id);
 END $$
 
 DELIMITER ;
@@ -168,6 +166,3 @@ DO
 CALL Delete30DayOld();
 
 SHOW EVENTS;
-
-
-
