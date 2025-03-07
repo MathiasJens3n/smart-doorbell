@@ -17,6 +17,33 @@ namespace smart_doorbell_api.Repositories
             this.logger = logger;
             this.dbConnectionFactory = dbConnectionFactory;
         }
+
+        public async Task<IEnumerable<Device>> GetByUserIdAsync(int userId)
+        {
+            try
+            {
+                using var connection = dbConnectionFactory.CreateConnection();
+
+                var parameters = new { p_user_id = userId };
+
+                return await connection.QueryAsync<Device>(
+                    "GetDevices",
+                    parameters,
+                    commandType: CommandType.StoredProcedure
+                );
+            }
+            catch (MySqlException mysqlEx)
+            {
+                logger.LogError(mysqlEx, "Database error while getting devices by registration code.");
+            }
+            catch (Exception ex)
+            {
+                logger.LogError(ex, "Unexpected error while getting devices by registration code.");
+            }
+
+            return Enumerable.Empty<Device>();
+        }
+
         public async Task<bool> AddDevice(Device device)
         {
             try
