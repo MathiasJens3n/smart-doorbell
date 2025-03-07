@@ -46,6 +46,33 @@ namespace smart_doorbell_api.Repositories
             return false;
         }
 
+        public async Task<bool> AddFcmTokenAsync(int userId, string fcmToken)
+        {
+            try
+            {
+                using var connection = dbConnectionFactory.CreateConnection();
+
+                var parameters = new
+                {
+                    token = fcmToken,
+                    user_id = userId
+                };
+
+                int rowsAffected = await connection.ExecuteAsync("UPDATE user SET fcm_token = @token WHERE id = @user_id;", parameters);
+                return rowsAffected > 0;
+            }
+            catch (MySqlException mysqlEx)
+            {
+                logger.LogError(mysqlEx, "Database error while adding user.");
+            }
+            catch (Exception ex)
+            {
+                logger.LogError(ex, "Unexpected error while adding user.");
+            }
+
+            return false;
+        }
+
         public async Task<User?> GetByIdAsync(int id)
         {
             try
@@ -93,6 +120,31 @@ namespace smart_doorbell_api.Repositories
             catch (Exception ex)
             {
                 logger.LogError(ex, "Unexpected error while getting user by username.");
+            }
+
+            return null;
+        }
+
+        public async Task<string?> GetFcmTokenByUserIdAsync(int userId)
+        {
+            try
+            {
+                using var connection = dbConnectionFactory.CreateConnection();
+
+                var parameters = new { user_id = userId };
+
+                return await connection.QueryFirstOrDefaultAsync<string>(
+                    "SELECT fcm_token FROM user WHERE id = @user_id",
+                    parameters
+                );
+            }
+            catch (MySqlException mysqlEx)
+            {
+                logger.LogError(mysqlEx, "Database error while getting token by user id");
+            }
+            catch (Exception ex)
+            {
+                logger.LogError(ex, "Database error while getting token by user id");
             }
 
             return null;

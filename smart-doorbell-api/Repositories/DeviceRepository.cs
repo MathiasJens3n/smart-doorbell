@@ -51,7 +51,7 @@ namespace smart_doorbell_api.Repositories
                 using var connection = dbConnectionFactory.CreateConnection();
 
                 var parameters = new DynamicParameters();
-                parameters.Add("p_registration_code", device.RegistrationCode, DbType.String);
+                parameters.Add("p_registration_code", device.Registration_Code, DbType.String);
                 parameters.Add("p_user_id", dbType: DbType.Int32, direction: ParameterDirection.Output);
 
                 await connection.ExecuteAsync("AddDevice", parameters, commandType: CommandType.StoredProcedure);

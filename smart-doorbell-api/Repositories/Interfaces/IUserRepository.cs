@@ -33,5 +33,20 @@ namespace smart_doorbell_api.Repositories.Interfaces
         /// <param name="user">The user entity with updated information.</param>
         /// <returns>Returns true if the user was updated successfully; otherwise, returns false.</returns>
         Task<bool> UpdateAsync(User user);
+
+        /// <summary>
+        /// Adds or updates the Firebase Cloud Messaging (FCM) token for a specified user.
+        /// </summary>
+        /// <param name="userId">The unique identifier of the user.</param>
+        /// <param name="fcmToken">The FCM token to be stored.</param>
+        /// <returns>Returns true if the token is successfully added or updated; otherwise, false.</returns>
+        Task<bool> AddFcmTokenAsync(int userId, string fcmToken);
+
+        /// <summary>
+        /// Retrieves the FCM token for a specified user.
+        /// </summary>
+        /// <param name="userId">The unique identifier of the user.</param>
+        /// <returns>Returns the fcm token if found, otherwise null</returns>
+        Task<string?> GetFcmTokenByUserIdAsync(int userId);
     }
 }

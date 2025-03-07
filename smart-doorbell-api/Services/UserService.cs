@@ -57,5 +57,16 @@ namespace smart_doorbell_api.Services
 
             return await userRepository.UpdateAsync(user);
         }
+
+        /// <summary>
+        /// Adds or updates the Firebase Cloud Messaging (FCM) token for a specified user using a DTO.
+        /// </summary>
+        /// <param name="userId">The unique identifier of the user.</param>
+        /// <param name="fcmTokenDto">The data transfer object containing the FCM token.</param>
+        /// <returns>Returns true if the token is successfully added or updated; otherwise, false.</returns>
+        public async Task<bool> AddFcmTokenAsync(int userId, FcmTokenDto fcmTokenDto)
+        {
+            return await userRepository.AddFcmTokenAsync(userId, fcmTokenDto.Token);
+        }
     }
 }

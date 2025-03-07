@@ -60,6 +60,7 @@ builder.Services.AddScoped<UserService>();
 builder.Services.AddScoped<AuthService>();
 builder.Services.AddScoped<IImageRepository, ImageRepository>();
 builder.Services.AddScoped<ImageService>();
+builder.Services.AddScoped<NotificationService>();
 
 
 var app = builder.Build();
