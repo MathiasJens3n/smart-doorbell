@@ -46,14 +46,20 @@ DELIMITER ;
 DELIMITER $$
 
 CREATE PROCEDURE AddDevice(
-IN p_device_name VARCHAR(255), 
-IN p_registration_code VARCHAR(255)
+    IN p_device_name VARCHAR(255), 
+    IN p_registration_code VARCHAR(255),
+    OUT p_user_id INT
 )
 BEGIN
-    INSERT INTO device (name, registration_code) VALUE (p_device_name, p_registration_code);
+    -- Insert the device
+    INSERT INTO device (name, registration_code) VALUES (p_device_name, p_registration_code);
+
+    -- Fetch the user_id associated with this registration_code
+    SELECT Id INTO p_user_id FROM user WHERE registration_code = p_registration_code LIMIT 1;
 END $$
 
 DELIMITER ;
+
 
 /* Get devices */
 DELIMITER $$
