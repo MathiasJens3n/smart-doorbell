@@ -2,7 +2,6 @@
 {
     public class DeviceDTO
     {
-        public required string Name { get; set; }
         public required string RegistrationCode { get; set; }
     }
 }

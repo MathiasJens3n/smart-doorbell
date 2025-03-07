@@ -38,7 +38,6 @@ namespace smart_doorbell_api.Services
             // Convert DTO to Domain Model
             var device = new Device
             {
-                Name = deviceDto.Name,
                 RegistrationCode = deviceDto.RegistrationCode
             };
 
