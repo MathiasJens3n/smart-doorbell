@@ -41,7 +41,7 @@ export class CreateAccountComponent {
         console.log('account successful', response);
 
         // Trigger navigation to protected route after successful account
-        self.router.navigate(['/Components/']);
+        self.router.navigate(['/login']);
       },
       error(error: any) {
         // Handle account error here
