@@ -32,8 +32,8 @@ namespace smart_doorbell_api.Services
         /// Converts the provided DeviceDTO into a domain model before saving.
         /// </summary>
         /// <param name="deviceDto">The device data transfer object containing device details.</param>
-        /// <returns>Returns true if the device was added successfully; otherwise, returns false.</returns>
-        public async Task<bool> AddDevice(DeviceDTO deviceDto)
+        /// <returns>Returns userId if found, otherwise null.</returns>
+        public async Task<int?> AddDevice(DeviceDTO deviceDto)
         {
             // Convert DTO to Domain Model
             var device = new Device

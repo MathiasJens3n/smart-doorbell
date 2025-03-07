@@ -20,7 +20,7 @@ namespace smart_doorbell_api.Repositories.Interfaces
         /// Adds a new device to the repository.
         /// </summary>
         /// <param name="device">The device entity to be added.</param>
-        /// <returns>Returns true if the device was added successfully; otherwise, returns false.</returns>
-        Task<bool> AddDevice(Device device);
+        /// <returns>Returns userId if found, otherwise null.</returns>
+        Task<int?> AddDevice(Device device);
     }
 }

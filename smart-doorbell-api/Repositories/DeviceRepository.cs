@@ -44,20 +44,22 @@ namespace smart_doorbell_api.Repositories
             return Enumerable.Empty<Device>();
         }
 
-        public async Task<bool> AddDevice(Device device)
+        public async Task<int?> AddDevice(Device device)
         {
             try
             {
                 using var connection = dbConnectionFactory.CreateConnection();
 
-                var parameters = new
-                {
-                    p_device_name = device.Name,
-                    p_registration_code = device.RegistrationCode
-                };
+                var parameters = new DynamicParameters();
+                parameters.Add("p_registration_code", device.RegistrationCode, DbType.String);
+                parameters.Add("p_user_id", dbType: DbType.Int32, direction: ParameterDirection.Output);
 
-                int rowsAffected = await connection.ExecuteAsync("AddDevice", parameters, commandType: CommandType.StoredProcedure);
-                return rowsAffected > 0;
+                await connection.ExecuteAsync("AddDevice", parameters, commandType: CommandType.StoredProcedure);
+
+                // Retrieve the user_id from the output parameter
+                int? userId = parameters.Get<int?>("p_user_id");
+
+                return userId;
             }
             catch (MySqlException mysqlEx)
             {
@@ -68,7 +70,7 @@ namespace smart_doorbell_api.Repositories
                 logger.LogError(ex, "Unexpected error while adding device.");
             }
 
-            return false;
+            return null;
         }
     }
 }

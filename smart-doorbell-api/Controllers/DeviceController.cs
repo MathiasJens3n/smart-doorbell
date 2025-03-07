@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using smart_doorbell_api.Dto;
+using smart_doorbell_api.Models;
 using smart_doorbell_api.Services;
 using smart_doorbell_api.Tools;
 using System.Security.Claims;
@@ -58,11 +59,11 @@ namespace smart_doorbell_api.Controllers
                 return BadRequest("Device data is required.");
             }
 
-            var result = await deviceService.AddDevice(device);
+            var userId = await deviceService.AddDevice(device);
 
-            if (result)
+            if (userId.HasValue)
             {
-                return Created();
+                return CreatedAtAction(nameof(AddDevice), new { userId = userId.Value }, new { userId = userId.Value });
             }
 
             return StatusCode(500, "Failed to add device.");
