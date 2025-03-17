@@ -9,7 +9,7 @@ CREATE TABLE user(
     username VARCHAR(255) NOT NULL,
     password VARCHAR(255) NOT NULL,
     registration_code VARCHAR(255) NOT NULL UNIQUE,
-    fcm_token VARCHAR(255) NOT NULL,
+    fcm_token VARCHAR(255) NULL,
     PRIMARY KEY (Id)
 );
 
