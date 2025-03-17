@@ -1,10 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import { FormGroup, FormBuilder, Validators } from '@angular/forms';
+import { FormGroup, FormBuilder, Validators, AbstractControl } from '@angular/forms';
 import { Observer } from 'rxjs';
 import { Router } from '@angular/router';
 import { CreateAccountService } from '../../Service/create-account.service';
 import { Account } from '../../Interfaces/account';
-
 
 @Component({
   selector: 'app-create-account',
@@ -12,7 +11,7 @@ import { Account } from '../../Interfaces/account';
   styleUrl: './create-account.component.css'
 })
 export class CreateAccountComponent {
- accountForm!: FormGroup;
+  accountForm!: FormGroup;
 
   constructor(private formBuilder: FormBuilder, private createAccountService: CreateAccountService, private router: Router) { }
 
@@ -21,7 +20,19 @@ export class CreateAccountComponent {
       username: ['', Validators.required],
       password: ['', Validators.required],
       password2: ['', Validators.required]
-    });
+    }, { validator: this.passwordMatchValidator }); // Apply custom validator for password matching
+  }
+
+  // Custom validator to check if passwords match
+  passwordMatchValidator(control: AbstractControl) {
+    const password = control.get('password')?.value;
+    const password2 = control.get('password2')?.value;
+
+    if (password !== password2) {
+      control.get('password2')?.setErrors({ mismatch: true });
+    } else {
+      control.get('password2')?.setErrors(null);
+    }
   }
 
   onSubmit() {
@@ -32,6 +43,12 @@ export class CreateAccountComponent {
     const username = this.accountForm.controls['username'].value;
     const password = this.accountForm.controls['password'].value;
     const password2 = this.accountForm.controls['password2'].value;
+
+    // Check if passwords match before sending request
+    if (password !== password2) {
+      this.accountForm.controls['password2'].setErrors({ mismatch: true });
+      return;
+    }
 
     const self = this; // Store a reference to the component context
 
@@ -51,8 +68,7 @@ export class CreateAccountComponent {
       }
     };
 
-    this.createAccountService.postAccount(username, password).subscribe(observer);
-
+    this.createAccountService.AddUser(username, password).subscribe(observer);
   }
 
   Login() {

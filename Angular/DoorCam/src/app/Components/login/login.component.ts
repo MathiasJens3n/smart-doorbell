@@ -48,7 +48,7 @@ export class LoginComponent implements OnInit {
       }
     };
 
-    this.loginService.postLogin(username, password).subscribe(observer);
+    this.loginService.Login(username, password).subscribe(observer);
 
   }
 

@@ -7,7 +7,7 @@ import { Account } from '../Interfaces/account';
   providedIn: 'root'
 })
 export class ImageGalleryService {
-  url: string = "http://localhost:5000";
+  url: string = "http://localhost:5005";
   endpoint: string = "user"; // API endpoint
 
   constructor(private httpClient: HttpClient) {}

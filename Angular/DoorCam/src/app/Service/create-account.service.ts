@@ -7,12 +7,12 @@ import { Account } from '../Interfaces/account';
   providedIn: 'root'
 })
 export class CreateAccountService {
-  url: string = "http://localhost:5000/auth";
+  url: string = "http://localhost:5005/auth";
   endpoint: string = "register"; // API endpoint
 
   constructor(private httpClient: HttpClient) {}
 
-  postAccount(username: string, password: string): Observable<Account> {
+  AddUser(username: string, password: string): Observable<Account> {
     const AccountData = { username, password };
 
     // Send a POST so the api run user creation aka account.

@@ -7,12 +7,12 @@ import { Login } from '../Interfaces/login';
   providedIn: 'root'
 })
 export class LoginService {
-  url: string = "http://localhost:5000/auth";
+  url: string = "http://localhost:5005/auth";
   endpointLogin: string = "login"; // API endpoint
 
   constructor(private httpClient: HttpClient) {}
 
-  postLogin(username: string, password: string): Observable<Login> {
+  Login(username: string, password: string): Observable<Login> {
     const loginData = { username, password };
 
     // Send a POST request to the API for login
