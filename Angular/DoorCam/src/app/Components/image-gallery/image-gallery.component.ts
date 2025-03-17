@@ -4,6 +4,7 @@ import { Observer } from 'rxjs';
 import { Router } from '@angular/router';
 import { ImageGalleryService } from '../../Service/image-gallery.service';
 import { Account } from '../../Interfaces/account';
+import { Image } from '../../Interfaces/image';
 
 @Component({
   selector: 'app-image-gallery',
@@ -11,46 +12,41 @@ import { Account } from '../../Interfaces/account';
   styleUrls: ['./image-gallery.component.css']
 })
 export class ImageGalleryComponent implements OnInit {
-  username: string = ''; // Declare and initialize the username
-  registration_Code: string = ''; // Declare and initialize the registration_Code
-  
-  // Example array for images, you can replace null with actual URLs
-  ImageArray = [
-    null, null, null, null, null,
-    null, null, null, null, null,
-    null, null, null, null, null,
-    null, null, null, null, null,
-    null, null, null, null, null
-  ];
+  username: string = '';
+  registration_Code: string = '';
 
-  constructor(
-    private formBuilder: FormBuilder,
-    private imageGalleryService: ImageGalleryService,
-    private router: Router
-  ) {}
+  // Array of Image objects (with id and data)
+  ImageArray: Image[] = [];
+
+  constructor(private imageGalleryService: ImageGalleryService) {}
 
   ngOnInit(): void {
-    // Create an observer to handle the response of the createAccountService
-    const observer: Observer<Account> = {
-      next: (response: Account) => {      
-        // Save the username and registration code from the response
+    // Fetch user information (if needed)
+    this.imageGalleryService.Getuser().subscribe({
+      next: (response) => {
         this.username = response.username;
         this.registration_Code = response.registration_Code;
-        
-        // Optionally, log the variables to check
-        console.log('Username:', this.username);
-        console.log('Registration Code:', this.registration_Code);
       },
-      error: (error: any) => {
-        // Handle account error here
-        console.error('Account error', error);
-      },
-      complete: () => {
-        // Do something after the observable completes if needed
+      error: (error) => {
+        console.error('Error fetching user:', error);
       }
-    };
-    
-    // Subscribe to the service that fetches the account details
-    this.imageGalleryService.Getuser().subscribe(observer);
+    });
+
+    // Fetch images and store them in ImageArray
+    this.imageGalleryService.GetImages().subscribe({
+      next: (images) => {
+        // Assuming 'images' is an array of Image objects returned from the API
+        this.ImageArray = images.map(image => ({
+          id: image.id,
+          data: image.data,
+          insert_Date: image.insert_Date,
+          user_Id: image.user_Id
+        }));
+        console.log('Images fetched:', this.ImageArray);
+      },
+      error: (error) => {
+        console.error('Error fetching images:', error);
+      }
+    });
   }
 }

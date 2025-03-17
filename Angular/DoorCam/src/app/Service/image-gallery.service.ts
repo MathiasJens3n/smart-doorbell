@@ -8,25 +8,36 @@ import { Account } from '../Interfaces/account';
 })
 export class ImageGalleryService {
   url: string = "http://localhost:5005";
-  endpoint: string = "user"; // API endpoint
+  endpoint1: string = "user"; // API endpoint for user
+  endpoint2: string = "image"; // Add an endpoint for images
 
   constructor(private httpClient: HttpClient) {}
 
   Getuser(): Observable<Account> {
-    // Retrieve the JWT token from sessionStorage
     const token = sessionStorage.getItem('Token');
-    
-    // Check if the token exists
     if (!token) {
       throw new Error('Token not found in sessionStorage');
     }
 
-    // Set up headers with the Authorization Bearer token
     const headers = new HttpHeaders({
       'Authorization': `Bearer ${token}`
     });
 
-    // Send a GET request with the Authorization header
-    return this.httpClient.get<Account>(`${this.url}/${this.endpoint}`, { headers });
+    return this.httpClient.get<Account>(`${this.url}/${this.endpoint1}`, { headers });
+  }
+
+  // This will return the list of images
+  GetImages(): Observable<any[]> {
+    const token = sessionStorage.getItem('Token');
+    if (!token) {
+      throw new Error('Token not found in sessionStorage');
+    }
+
+    const headers = new HttpHeaders({
+      'Authorization': `Bearer ${token}`
+    });
+
+    // Send a GET request to fetch images
+    return this.httpClient.get<any[]>(`${this.url}/${this.endpoint2}`, { headers });
   }
 }
