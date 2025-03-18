@@ -8,6 +8,7 @@ import { LoginComponent } from './Components/login/login.component';
 import { HttpClientModule } from '@angular/common/http';
 import { CreateAccountComponent } from './Components/create-account/create-account.component';
 import { ImageGalleryComponent } from './Components/image-gallery/image-gallery.component';
+import { DeviceComponent } from './Components/device/device.component';
 
 @NgModule({
   declarations: [
@@ -15,6 +16,7 @@ import { ImageGalleryComponent } from './Components/image-gallery/image-gallery.
     LoginComponent,
     CreateAccountComponent,
     ImageGalleryComponent,
+    DeviceComponent,
     
   ],
   imports: [
