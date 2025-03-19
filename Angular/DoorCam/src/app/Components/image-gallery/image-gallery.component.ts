@@ -18,7 +18,7 @@ export class ImageGalleryComponent implements OnInit {
   // Array of Image objects (with id and data)
   ImageArray: Image[] = [];
 
-  constructor(private imageGalleryService: ImageGalleryService) {}
+  constructor(private imageGalleryService: ImageGalleryService, private router: Router) {}
 
   ngOnInit(): void {
     // Fetch user information (if needed)
@@ -48,5 +48,9 @@ export class ImageGalleryComponent implements OnInit {
         console.error('Error fetching images:', error);
       }
     });
+  }
+
+  Device() {
+    this.router.navigate(['/components/device']);
   }
 }
