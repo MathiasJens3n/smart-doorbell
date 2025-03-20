@@ -22,11 +22,11 @@
   <!-- Image Grid -->
   <div class="image-grid">
     <div *ngFor="let img of ImageArray" class="image-item">
-      <!-- Show image if img is not null and is a base64 string -->
-      <img *ngIf="img" [src]="'data:image/jpeg;base64,' + img" alt="IMG" />
-      
-      <!-- Show gray box with 'IMG' text if img is null -->
-      <span *ngIf="!img">IMG</span>
+      <!-- Show image if it exists -->
+      <img *ngIf="sanitizedImageMap[img.id]" [src]="sanitizedImageMap[img.id]" alt="IMG" />
+
+      <!-- Show gray box with 'IMG' text if image is null -->
+      <span *ngIf="!sanitizedImageMap[img.id]">IMG</span>
     </div>
   </div>
 </div>

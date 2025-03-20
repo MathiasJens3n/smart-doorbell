@@ -2,8 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { Observer } from 'rxjs';
 import { Router } from '@angular/router';
+import { DomSanitizer, SafeUrl } from '@angular/platform-browser';
 import { ImageGalleryService } from '../../Service/image-gallery.service';
-import { Account } from '../../Interfaces/account';
 import { Image } from '../../Interfaces/image';
 
 @Component({
@@ -17,8 +17,9 @@ export class ImageGalleryComponent implements OnInit {
 
   // Array of Image objects (with id and data)
   ImageArray: Image[] = [];
+  sanitizedImageMap: { [key: string]: SafeUrl } = {};  //  Store sanitized images
 
-  constructor(private imageGalleryService: ImageGalleryService, private router: Router) {}
+  constructor(private imageGalleryService: ImageGalleryService, private router: Router, private sanitizer: DomSanitizer) { }
 
   ngOnInit(): void {
     // Fetch user information (if needed)
@@ -32,21 +33,23 @@ export class ImageGalleryComponent implements OnInit {
       }
     });
 
-    // Fetch images and store them in ImageArray
+    // Fetch images
     this.imageGalleryService.GetImages().subscribe({
       next: (images) => {
-        // Assuming 'images' is an array of Image objects returned from the API
-        this.ImageArray = images.map(image => ({
-          id: image.id,
-          data: image.data,
-          insert_Date: image.insert_Date,
-          user_Id: image.user_Id
-        }));
-        console.log('Images fetched:', this.ImageArray);
+        this.ImageArray = images;
+
+        // Sanitize each Base64 image URL
+        this.ImageArray.forEach(image => {
+          if (image.data) {
+            this.sanitizedImageMap[image.id] = this.sanitizer.bypassSecurityTrustUrl(
+              `data:image/jpeg;base64,${image.data}`
+            );
+          }
+        });
+
+        console.log('Sanitized Image Map:', this.sanitizedImageMap);
       },
-      error: (error) => {
-        console.error('Error fetching images:', error);
-      }
+      error: (error) => console.error('Error fetching images:', error)
     });
   }
 
