@@ -40,4 +40,21 @@ export class ImageGalleryService {
     // Send a GET request to fetch images
     return this.httpClient.get<any[]>(`${this.url}/${this.endpoint2}`, { headers });
   }
+
+
+  UpdateUser(username: string, password: string): Observable<Account> {
+    const AccountData = { username, password };
+
+    const token = sessionStorage.getItem('Token');
+    if (!token) {
+      throw new Error('Token not found in sessionStorage');
+    }
+
+    const headers = new HttpHeaders({
+      'Authorization': `Bearer ${token}`
+    });
+    // Send a put so the api run user creation aka account.
+    return this.httpClient.put<Account>(`${this.url}/${this.endpoint1}`, AccountData, { headers })
+
+  }
 }

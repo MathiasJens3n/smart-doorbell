@@ -84,3 +84,53 @@
     border-radius: 5px;
   }
   
+
+
+  /* form */
+
+
+  form {
+    width: 100%;
+}
+
+.formGroup {
+    display: flex;
+    flex-wrap: wrap; /* Allows wrapping of elements if necessary */
+    justify-content: space-between; /* Space out the elements */
+}
+
+.left, .right {
+    width: 48%; /* Set each side to take up 48% of the form width */
+    padding: 5px;
+}
+
+input[type="text"], input[type="password"] {
+    width: 100%; /* Make input fields full width within their container */
+    margin-top: 5px;
+    border-radius: 3px;
+    border: 1px solid black;
+    font-family: 'Times New Roman', Times, serif;
+    box-sizing: border-box; /* Include padding in the width calculation */
+}
+
+label {
+    color: #E0FBFC;
+    font-family: 'Times New Roman', Times, serif;
+    font-size: 105%;
+    display: block;
+    margin-top: 5px; /* Space between label and input */
+}
+
+.btn {
+    width: auto;
+    background-color: #4da4c2;
+    color: white;
+    cursor: pointer;
+    border-radius: 3px;
+    margin-top: 10px;
+    font-size:small;
+}
+
+.formbtn:hover {
+    background-color: #3985a1; /* darker blue */
+}
