@@ -84,7 +84,7 @@ namespace smart_doorbell_api.Controllers
                 return Unauthorized("Invalid or missing user token.");
             }
 
-            IEnumerable<Image> images = await imageService.GetImagesByUserIdAsync(userIdFromToken);
+            IEnumerable<ImageDTO> images = await imageService.GetImagesByUserIdAsync(userIdFromToken);
 
             if (images == null || !images.Any())
             {

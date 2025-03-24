@@ -56,9 +56,22 @@ namespace smart_doorbell_api.Services
         /// </summary>
         /// <param name="userId">The unique identifier of the user.</param>
         /// <returns>A collection of images belonging to the specified user.</returns>
-        public async Task<IEnumerable<Image>> GetImagesByUserIdAsync(int userId)
+        public async Task<IEnumerable<ImageDTO>> GetImagesByUserIdAsync(int userId)
         {
-            return await imageRepository.GetByUserIdAsync(userId);
+            var images = await imageRepository.GetByUserIdAsync(userId);
+
+            var imageDtos = new List<ImageDTO>();
+            foreach (var img in images)
+            {
+                imageDtos.Add(new ImageDTO
+                {
+                    Data = Convert.ToBase64String(img.Data),
+                    UserId = img.User_Id,
+                    Insert_Date = img.Insert_Date
+                });
+            }
+
+            return imageDtos;
         }
     }
 }
