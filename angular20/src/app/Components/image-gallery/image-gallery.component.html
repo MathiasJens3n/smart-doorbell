@@ -1,0 +1,59 @@
+<div class="container">
+    <!-- User Info Card -->
+    <div class="user-card">
+      <div *ngIf="!isEditing">
+        <div class="user-info">
+          <label>Brugernavn</label>
+          <input type="text" [value]="username" readonly />
+  
+          <button class="edit-btn" (click)="Edit_toggle(true)">Rediger</button>
+        </div>
+  
+        <div class="user-info">
+          <label style="margin-right: 8.6%;">Password</label>
+          <input type="password" value="******" readonly />
+        </div>
+  
+        <div class="user-info registration-code">
+          <span style="font-size: smaller;">Registreringskode :</span>
+          <span style="font-size: smaller;">{{ registration_Code }}</span>
+          <button class="manage-btn" (click)="Device()">Administre enheder</button>
+        </div>
+      </div>
+  
+      <div>
+      <form *ngIf="isEditing" [formGroup]="updateform" (ngSubmit)="onSubmit()">
+        <div class="formGroup">
+          <div class="right">
+            <label for="Username">Brugernavn :</label>
+            <label for="Password">Kodeord :</label>
+            <label for="Password2">Bekræft kodeord :</label>
+          </div>
+          <div class="left">
+            <input type="text" id="Username" formControlName="username" placeholder="Brugernavn">
+            <input type="password" id="Password" formControlName="password" placeholder="Kodeord">
+            <input type="password" id="Password2" formControlName="password2" placeholder="Bekræft kodeord">
+  
+            <div class="error"
+              *ngIf="updateform.get('password2')?.errors?.['mismatch'] && updateform.get('password2')?.touched">
+              Kode matcher ikke
+            </div>
+          </div>
+        </div>
+        <input style="float: left;" type="button" class="btn" value="Annuller" (click)="Edit_toggle(false)">
+        <input style="float: right;" class="btn" type="submit" value="Gem ændringer">
+      </form>
+      </div>
+    </div>
+  
+    <!-- Image Grid -->
+    <div class="image-grid">
+      <div *ngFor="let img of ImageArray" class="image-item">
+        <!-- Show image if it exists -->
+        <img *ngIf="sanitizedImageMap[img.id]" [src]="sanitizedImageMap[img.id]" alt="IMG" />
+  
+        <!-- Show gray box with 'IMG' text if image is null -->
+        <span *ngIf="!sanitizedImageMap[img.id]">IMG</span>
+      </div>
+    </div>
+  </div>

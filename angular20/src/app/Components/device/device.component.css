@@ -1,0 +1,63 @@
+/* Ensures the container is centered and styled */
+.container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: #0f3a4d;
+    min-height: 100vh;
+    padding: 20px;
+}
+
+/* User info card styling */
+.user-card {
+    background-color: #2685a6;
+    padding: 15px;
+    border-radius: 10px;
+    margin-bottom: 20px;
+    width: 105%;
+    max-width: 360px;
+    color: #fff;
+}
+
+.btn {
+    font-size: smaller;
+    background-color: #4da4c2;
+    border: none;
+    color: #fff;
+    border-radius: 5px;
+    margin-left: 5px;
+    cursor: pointer;
+    width: auto;
+    height: auto;
+}
+
+h5 {
+    text-align: center;
+    margin-bottom: 5vh;
+}
+
+
+table {
+    border: 1px solid black;
+}
+
+th {
+    background-color: #4da4c2;
+    color: white;
+}
+
+.pagination {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 20px;
+  }
+  
+  .pagination button {
+    margin: 0 10px;
+  }
+  
+  .pagination span {
+    font-size: 16px;
+    margin: 0 15px;
+  }
