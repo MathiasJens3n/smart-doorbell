@@ -2,19 +2,19 @@ import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { Observer } from 'rxjs';
 import { Router } from '@angular/router';
-import { LoginService } from '../../Service/login.service';
-import { Login } from '../..//Interfaces/login';
+import { LoginService } from '../../Services/login.service';
+import { Login } from '../../Interfaces/login';
 
 @Component({
   selector: 'app-login',
   standalone: false,
   templateUrl: './login.component.html',
-  styleUrl: './login.component.css'
+  styleUrls: ['./login.component.css']
 })
 export class LoginComponent implements OnInit {
   loginForm!: FormGroup;
 
-  constructor(private formBuilder: FormBuilder, private loginService: LoginService, private router: Router) { }
+  constructor(private formBuilder: FormBuilder, private loginServices: LoginService, private router: Router) { }
 
   ngOnInit(): void {
     this.loginForm = this.formBuilder.group({
@@ -38,19 +38,29 @@ export class LoginComponent implements OnInit {
         // Handle successful login response here
         console.log('Login successful', response);
 
-        // Trigger navigation to protected route after successful login
-        self.router.navigate(['/components/gallery']);
+        // After successful login, attempt to register FCM token
+        self.loginServices.registerFCMn().subscribe({
+          next(fcmResponse) {
+            // Handle the FCM registration success
+            console.log('FCM registration successful', fcmResponse);
+            self.router.navigate(['/components/gallery']); // Navigate to the gallery or another page
+          },
+          error(fcmError) {
+            // Handle FCM registration error
+            console.error('FCM registration error', fcmError);
+            // You can show an error message here if needed
+          }
+        });
       },
       error(error: any) {
         // Handle login error here
         console.error('Login error', error);
+        // Optionally, show a login error message here
       },
-      complete() {
-      }
+      complete() {}
     };
 
-    this.loginService.Login(username, password).subscribe(observer);
-
+    this.loginServices.Login(username, password).subscribe(observer);
   }
 
   Create_account() {

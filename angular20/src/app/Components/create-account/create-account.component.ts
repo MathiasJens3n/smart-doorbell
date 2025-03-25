@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators, AbstractControl } from '@angular/forms';
 import { Observer } from 'rxjs';
 import { Router } from '@angular/router';
-import { CreateAccountService } from '../../Service/create-account.service';
+import { CreateAccountService } from '../../Services/create-account.service';
 import { Account } from '../../Interfaces/account';
 
 @Component({

@@ -3,7 +3,7 @@ import { FormGroup, FormBuilder, Validators, AbstractControl } from '@angular/fo
 import { Observer } from 'rxjs';
 import { Router } from '@angular/router';
 import { DomSanitizer, SafeUrl } from '@angular/platform-browser';
-import { ImageGalleryService } from '../../Service/image-gallery.service';
+import { ImageGalleryService } from '../../Services/image-gallery.service';
 import { Image } from '../../Interfaces/image';
 import { Account } from '../../Interfaces/account';
 
