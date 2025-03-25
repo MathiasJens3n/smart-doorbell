@@ -1,0 +1,103 @@
+{
+  "hash": "17304916",
+  "configHash": "a082f708",
+  "lockfileHash": "03cd78d3",
+  "browserHash": "58a29f76",
+  "optimized": {
+    "@angular/common": {
+      "src": "../../../../../../node_modules/@angular/common/fesm2022/common.mjs",
+      "file": "@angular_common.js",
+      "fileHash": "6845899f",
+      "needsInterop": false
+    },
+    "@angular/common/http": {
+      "src": "../../../../../../node_modules/@angular/common/fesm2022/http.mjs",
+      "file": "@angular_common_http.js",
+      "fileHash": "8164ba42",
+      "needsInterop": false
+    },
+    "@angular/core": {
+      "src": "../../../../../../node_modules/@angular/core/fesm2022/core.mjs",
+      "file": "@angular_core.js",
+      "fileHash": "ce1c9fed",
+      "needsInterop": false
+    },
+    "@angular/fire/app": {
+      "src": "../../../../../../node_modules/@angular/fire/fesm2022/angular-fire-app.mjs",
+      "file": "@angular_fire_app.js",
+      "fileHash": "c9e152bf",
+      "needsInterop": false
+    },
+    "@angular/fire/messaging": {
+      "src": "../../../../../../node_modules/@angular/fire/fesm2022/angular-fire-messaging.mjs",
+      "file": "@angular_fire_messaging.js",
+      "fileHash": "efda0fd5",
+      "needsInterop": false
+    },
+    "@angular/forms": {
+      "src": "../../../../../../node_modules/@angular/forms/fesm2022/forms.mjs",
+      "file": "@angular_forms.js",
+      "fileHash": "86a3fd03",
+      "needsInterop": false
+    },
+    "@angular/platform-browser": {
+      "src": "../../../../../../node_modules/@angular/platform-browser/fesm2022/platform-browser.mjs",
+      "file": "@angular_platform-browser.js",
+      "fileHash": "44f01a99",
+      "needsInterop": false
+    },
+    "@angular/router": {
+      "src": "../../../../../../node_modules/@angular/router/fesm2022/router.mjs",
+      "file": "@angular_router.js",
+      "fileHash": "53c55011",
+      "needsInterop": false
+    },
+    "@angular/service-worker": {
+      "src": "../../../../../../node_modules/@angular/service-worker/fesm2022/service-worker.mjs",
+      "file": "@angular_service-worker.js",
+      "fileHash": "1fcff4d6",
+      "needsInterop": false
+    },
+    "rxjs": {
+      "src": "../../../../../../node_modules/rxjs/dist/esm5/index.js",
+      "file": "rxjs.js",
+      "fileHash": "9dd1dd5d",
+      "needsInterop": false
+    },
+    "firebase/messaging": {
+      "src": "../../../../../../node_modules/firebase/messaging/dist/esm/index.esm.js",
+      "file": "firebase_messaging.js",
+      "fileHash": "9a4a4729",
+      "needsInterop": false
+    }
+  },
+  "chunks": {
+    "chunk-P2VHGVDD": {
+      "file": "chunk-P2VHGVDD.js"
+    },
+    "chunk-4KYTL5ZN": {
+      "file": "chunk-4KYTL5ZN.js"
+    },
+    "chunk-TYGWYUQM": {
+      "file": "chunk-TYGWYUQM.js"
+    },
+    "chunk-JYQRG4X3": {
+      "file": "chunk-JYQRG4X3.js"
+    },
+    "chunk-QN2KVYTI": {
+      "file": "chunk-QN2KVYTI.js"
+    },
+    "chunk-RLI5KEP3": {
+      "file": "chunk-RLI5KEP3.js"
+    },
+    "chunk-N2APCJKI": {
+      "file": "chunk-N2APCJKI.js"
+    },
+    "chunk-P6U2JBMQ": {
+      "file": "chunk-P6U2JBMQ.js"
+    },
+    "chunk-WDMUDEB6": {
+      "file": "chunk-WDMUDEB6.js"
+    }
+  }
+}
