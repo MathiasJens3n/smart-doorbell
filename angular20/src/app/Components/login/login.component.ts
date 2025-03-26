@@ -37,20 +37,21 @@ export class LoginComponent implements OnInit {
       next(response: Login) {
         // Handle successful login response here
         console.log('Login successful', response);
+        self.router.navigate(['/components/gallery']); // Navigate to the gallery or another page
 
         // After successful login, attempt to register FCM token
-        self.loginServices.registerFCMn().subscribe({
-          next(fcmResponse) {
+        //self.loginServices.registerFCMn().subscribe({
+         // next(fcmResponse) {
             // Handle the FCM registration success
-            console.log('FCM registration successful', fcmResponse);
-            self.router.navigate(['/components/gallery']); // Navigate to the gallery or another page
-          },
-          error(fcmError) {
+         //   console.log('FCM registration successful', fcmResponse);
+        //    self.router.navigate(['/components/gallery']); // Navigate to the gallery or another page
+         // },
+        //  error(fcmError) {
             // Handle FCM registration error
-            console.error('FCM registration error', fcmError);
+          //  console.error('FCM registration error', fcmError);
             // You can show an error message here if needed
-          }
-        });
+         // }
+       // });
       },
       error(error: any) {
         // Handle login error here
