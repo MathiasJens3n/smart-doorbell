@@ -7,7 +7,7 @@ import { Account } from '../Interfaces/account';
   providedIn: 'root'
 })
 export class CreateAccountService {
-  url: string = "http://localhost:5000/auth";
+  url: string = "https://37.27.27.136/auth";
   endpoint: string = "register"; // API endpoint
 
   constructor(private httpClient: HttpClient) {}
