@@ -6,7 +6,7 @@ import { Observable } from 'rxjs';
   providedIn: 'root'
 })
 export class DeviceService {
-  url: string = "http://localhost:5000";
+  url: string = "https://37.27.27.136";
   endpoint1: string = "device"; // API endpoint for user
 
   constructor(private httpClient: HttpClient) {}

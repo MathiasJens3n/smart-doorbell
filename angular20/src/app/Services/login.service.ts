@@ -8,9 +8,9 @@ import { Fcm } from '../Interfaces/fcm';
   providedIn: 'root'
 })
 export class LoginService {
-  url: string = "http://localhost:5000/auth";
+  url: string = "https://37.27.27.136/auth";
   endpointLogin: string = "login"; // API endpoint
-  url2: string = "http://localhost:5000/user";
+  url2: string = "https://37.27.27.136/user";
   endpoint2: string = "register-fcm-token"; // API endpoint
 
   constructor(private httpClient: HttpClient) {}
