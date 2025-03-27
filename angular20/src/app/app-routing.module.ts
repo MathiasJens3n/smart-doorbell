@@ -14,14 +14,16 @@ const checkAuth: CanActivateFn = () => {
 const routes: Routes = [
   { path: 'login', component: LoginComponent },
   { path: 'create-account', component: CreateAccountComponent },
-  {
-    path: 'components',
+  { path: 'gallery', component: CreateAccountComponent },
+  { path: 'device', component: CreateAccountComponent },
+  //{
+    //path: 'components',
     //canActivate: [checkAuth],  // Use function to protect routes
-    children: [
-      { path: 'gallery', component: ImageGalleryComponent },
-      { path: 'device', component: DeviceComponent },
-    ],
-  },
+    //children: [
+    //  { path: 'gallery', component: ImageGalleryComponent },
+    //  { path: 'device', component: DeviceComponent },
+    //],
+  //},
   { path: '', redirectTo: 'login', pathMatch: 'full' },  // Default to login if no route is matched
   { path: '**', redirectTo: 'login' },  // Redirect invalid routes to login
 ];

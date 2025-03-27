@@ -62,6 +62,6 @@ export class DeviceComponent implements OnInit {
 
   // Navigate to gallery
   Gallery() {
-    this.router.navigate(['/components/gallery']);
+    this.router.navigate(['/gallery']);
   }
 }

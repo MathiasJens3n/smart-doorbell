@@ -37,7 +37,7 @@ export class LoginComponent implements OnInit {
       next(response: Login) {
         // Handle successful login response here
         console.log('Login successful', response);
-        self.router.navigate(['/components/gallery']); // Navigate to the gallery or another page
+        self.router.navigate(['/gallery']); // Navigate to the gallery or another page
 
         // After successful login, attempt to register FCM token
         //self.loginServices.registerFCMn().subscribe({
