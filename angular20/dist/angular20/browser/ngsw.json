@@ -1,6 +1,6 @@
 {
   "configVersion": 1,
-  "timestamp": 1742980770232,
+  "timestamp": 1743064175701,
   "index": "/index.html",
   "assetGroups": [
     {
@@ -14,7 +14,7 @@
         "/favicon.ico",
         "/firebase-messaging-sw.js",
         "/index.html",
-        "/main-47WGDAE6.js",
+        "/main-VECTFKM3.js",
         "/manifest.webmanifest",
         "/polyfills-FFHMD2TL.js",
         "/styles-E73UGZID.css"
@@ -53,8 +53,8 @@
     "/icons/512.png": "630e6e9457344dcc0a439305bea9895c822ef2e2",
     "/icons/72.png": "b27e9c7b7995c83697c683a239c39eb598ceb7c0",
     "/icons/96.png": "ba186aa1b2cd524cf19824dc3d9cafe25ad71a87",
-    "/index.html": "76474e6e5d70265c4cb5fb71ae206b1374062d01",
-    "/main-47WGDAE6.js": "b4b632fe6de1ab35c706155b91d6a34e4fcee9c7",
+    "/index.html": "257b54bf195b6f2ad122fbd9354ca39450af5e32",
+    "/main-VECTFKM3.js": "aef200ed9a105293dc24bb31aa94bb9ed2461038",
     "/manifest.webmanifest": "616e93c0714f9a53508b531919d552914368759d",
     "/polyfills-FFHMD2TL.js": "f49b49a155bc7d192db62a4c15d0a612b460a667",
     "/styles-E73UGZID.css": "97a3a91359510e532588062a718ac90c49a98168"
