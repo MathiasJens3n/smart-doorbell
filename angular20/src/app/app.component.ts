@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { NotificationService } from './Services/notification.service';
 
 @Component({
   selector: 'app-root',
@@ -8,11 +7,7 @@ import { NotificationService } from './Services/notification.service';
   styleUrl: './app.component.css',
   template: `<h1>Firebase Notifications</h1>`
 })
-export class AppComponent implements OnInit {
-  constructor(private notificationService: NotificationService) { }
+export class AppComponent  {
+  constructor() { }
 
-  ngOnInit(): void {
-    this.notificationService.requestPermission();
-    this.notificationService.listenToMessages();
-  }
 }

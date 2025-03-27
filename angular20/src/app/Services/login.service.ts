@@ -10,8 +10,6 @@ import { Fcm } from '../Interfaces/fcm';
 export class LoginService {
   url: string = "https://37.27.27.136/auth";
   endpointLogin: string = "login"; // API endpoint
-  url2: string = "https://37.27.27.136/user";
-  endpoint2: string = "register-fcm-token"; // API endpoint
 
   constructor(private httpClient: HttpClient) {}
 
@@ -31,25 +29,5 @@ export class LoginService {
       );
   }
 
-  // Register the FCM token after a successful login
-  registerFCMn(): Observable<Fcm> {
-    const jwt = sessionStorage.getItem('Token');
-    if (!jwt) {
-      throw new Error('Token not found in sessionStorage');
-    }
 
-    const headers = new HttpHeaders({
-      'Authorization': `Bearer ${jwt}`
-    });
-
-    const token = sessionStorage.getItem('FCM');
-    if (!token) {
-      throw new Error('FCM token not found in sessionStorage');
-    }
-
-    const fcmtoken = { token };
-
-    // Send a POST request to register the FCM token
-    return this.httpClient.post<Fcm>(`${this.url2}/${this.endpoint2}`, fcmtoken, { headers });
-  }
 }
