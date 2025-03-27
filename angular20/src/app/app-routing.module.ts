@@ -16,7 +16,7 @@ const routes: Routes = [
   { path: 'create-account', component: CreateAccountComponent },
   {
     path: 'components',
-    canActivate: [checkAuth],  // Use function to protect routes
+    //canActivate: [checkAuth],  // Use function to protect routes
     children: [
       { path: 'gallery', component: ImageGalleryComponent },
       { path: 'device', component: DeviceComponent },
