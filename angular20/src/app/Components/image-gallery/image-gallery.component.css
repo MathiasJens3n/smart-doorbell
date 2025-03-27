@@ -14,7 +14,7 @@
     padding: 15px;
     border-radius: 10px;
     margin-bottom: 20px;
-    width: 105%;
+    width: 100%;
     max-width: 360px;
     color: #fff;
   }
@@ -64,7 +64,7 @@
   .image-grid {
     display: grid;
     grid-template-columns: repeat(5, 60px);
-    gap: 10px;
+    gap: 5px;
   }
   
   .image-item {

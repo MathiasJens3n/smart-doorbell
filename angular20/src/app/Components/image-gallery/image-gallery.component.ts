@@ -68,7 +68,7 @@ export class ImageGalleryComponent implements OnInit {
   }
 
   Device() {
-    this.router.navigate(['/device']);
+    this.router.navigate(['/components/device']);
   }
 
   Edit_toggle(enable: boolean) {
