@@ -1,0 +1,76 @@
+/* Two-column layout for the create form */
+.FormContainer {
+    width: 80vw; /* 50% of viewport width */
+    height: auto;
+    background-color: #278CBB; /* Light blue background */
+    margin: 0 auto; /* Center horizontally */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    padding-left: 10px;
+    padding-right: 10px;
+    border-radius: 5px; /* Optional rounded corners */
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2); /* Optional shadow for depth */
+    flex-direction: column; /* Stack form elements vertically */
+    border: 1px solid black;
+}
+
+h1 {
+    text-align: center;
+    color: #E0FBFC;
+    font-family: 'Times New Roman', Times, serif;
+    font-weight: bold;
+    font-size: xx-large;
+    text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5); /* Text shadow */
+    margin-top: 20vh; /* Adjust this for vertical positioning */
+    margin-bottom: 5vh;
+}
+
+form {
+    width: 100%;
+}
+
+.formGroup {
+    display: flex;
+    flex-wrap: wrap; /* Allows wrapping of elements if necessary */
+    justify-content: space-between; /* Space out the elements */
+}
+
+.left, .right {
+    width: 48%; /* Set each side to take up 48% of the form width */
+    padding: 5px;
+}
+
+input[type="text"], input[type="password"] {
+    width: 100%; /* Make input fields full width within their container */
+    margin-top: 5px;
+    border-radius: 3px;
+    border: 1px solid black;
+    font-family: 'Times New Roman', Times, serif;
+    box-sizing: border-box; /* Include padding in the width calculation */
+}
+
+label {
+    color: #E0FBFC;
+    font-family: 'Times New Roman', Times, serif;
+    font-size: 105%;
+    display: block;
+    margin-top: 5px; /* Space between label and input */
+}
+
+.btn {
+    width: auto;
+    background-color: #48A8D5;
+    color: white;
+    border: 1px solid black;
+    cursor: pointer;
+    border-radius: 3px;
+    margin-top: 10px;
+    font-size:small;
+}
+
+.btn:hover {
+    background-color: #4197c0; /* darker blue */
+}

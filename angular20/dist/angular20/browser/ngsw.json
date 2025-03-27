@@ -1,0 +1,81 @@
+{
+  "configVersion": 1,
+  "timestamp": 1743064175701,
+  "index": "/index.html",
+  "assetGroups": [
+    {
+      "name": "app",
+      "installMode": "prefetch",
+      "updateMode": "prefetch",
+      "cacheQueryOptions": {
+        "ignoreVary": true
+      },
+      "urls": [
+        "/favicon.ico",
+        "/firebase-messaging-sw.js",
+        "/index.html",
+        "/main-VECTFKM3.js",
+        "/manifest.webmanifest",
+        "/polyfills-FFHMD2TL.js",
+        "/styles-E73UGZID.css"
+      ],
+      "patterns": []
+    },
+    {
+      "name": "assets",
+      "installMode": "lazy",
+      "updateMode": "prefetch",
+      "cacheQueryOptions": {
+        "ignoreVary": true
+      },
+      "urls": [
+        "/icons/128.png",
+        "/icons/144.png",
+        "/icons/154.png",
+        "/icons/192.png",
+        "/icons/384.png",
+        "/icons/512.png",
+        "/icons/72.png",
+        "/icons/96.png"
+      ],
+      "patterns": []
+    }
+  ],
+  "dataGroups": [],
+  "hashTable": {
+    "/favicon.ico": "9c39f434fe1261f68c5e3eefdf734630d99c5670",
+    "/firebase-messaging-sw.js": "35dc1e722be4c1e533ff2c6a389c8d13fb8e9777",
+    "/icons/128.png": "c2f61e9d4c71ba5420fa26f3d089b02c6fbb5d8c",
+    "/icons/144.png": "7c0310c5cca439510c91dcac72fd1dc29f859f08",
+    "/icons/154.png": "536a7f82be5a6df2624588184f99af187b3aaead",
+    "/icons/192.png": "a5a392bb223234da6aef7d6ee7963e42a512b27b",
+    "/icons/384.png": "1bbf3ae582a60c6898b74f3c71ca72d44b0e1818",
+    "/icons/512.png": "630e6e9457344dcc0a439305bea9895c822ef2e2",
+    "/icons/72.png": "b27e9c7b7995c83697c683a239c39eb598ceb7c0",
+    "/icons/96.png": "ba186aa1b2cd524cf19824dc3d9cafe25ad71a87",
+    "/index.html": "257b54bf195b6f2ad122fbd9354ca39450af5e32",
+    "/main-VECTFKM3.js": "aef200ed9a105293dc24bb31aa94bb9ed2461038",
+    "/manifest.webmanifest": "616e93c0714f9a53508b531919d552914368759d",
+    "/polyfills-FFHMD2TL.js": "f49b49a155bc7d192db62a4c15d0a612b460a667",
+    "/styles-E73UGZID.css": "97a3a91359510e532588062a718ac90c49a98168"
+  },
+  "navigationUrls": [
+    {
+      "positive": true,
+      "regex": "^\\/.*$"
+    },
+    {
+      "positive": false,
+      "regex": "^\\/(?:.+\\/)?[^/]*\\.[^/]*$"
+    },
+    {
+      "positive": false,
+      "regex": "^\\/(?:.+\\/)?[^/]*__[^/]*$"
+    },
+    {
+      "positive": false,
+      "regex": "^\\/(?:.+\\/)?[^/]*__[^/]*\\/.*$"
+    }
+  ],
+  "navigationRequestStrategy": "performance"
+}

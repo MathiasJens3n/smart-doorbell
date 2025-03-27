@@ -1,0 +1,29 @@
+<h1>Smart Doorbell</h1>
+
+<div class="FormContainer">
+    <form [formGroup]="accountForm" (ngSubmit)="onSubmit()">
+        <div class="formGroup">
+            <div class="right">
+                <label for="Username">Brugernavn :</label>
+                <label for="Password">Kodeord :</label>
+                <label for="Password2">Bekræft kodeord :</label>
+            </div>
+            <div class="left">
+                <input type="text" id="Username" formControlName="username" placeholder="Brugernavn">
+                <input type="password" id="Password" formControlName="password" placeholder="Kodeord">
+                <input type="password" id="Password2" formControlName="password2" placeholder="Bekræft kodeord">
+                
+                <!-- Corrected error message check -->
+                <div style="color: red; font-size: small; font-weight: bold;   text-shadow: 
+                1px 1px 0 white, 
+                -1px -1px 0 white,  
+                1px -1px 0 white,  
+                -1px 1px 0 white;" *ngIf="accountForm.get('password2')?.errors?.['mismatch'] && accountForm.get('password2')?.touched" class="error">
+                    Kode matcher ikke
+                </div>
+            </div>
+        </div>
+        <input style="float: left;" type="button" class="btn" value="Anuller" (click)="Login()">
+        <input style="float: right;" class="btn" type="submit" value="Opret konto">
+    </form>
+</div>
