@@ -65,6 +65,7 @@ namespace smart_doorbell_api.Services
             {
                 imageDtos.Add(new ImageDTO
                 {
+                    Id = img.Id,
                     Data = Convert.ToBase64String(img.Data),
                     UserId = img.User_Id,
                     Insert_Date = img.Insert_Date
