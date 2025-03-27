@@ -14,8 +14,8 @@ const checkAuth: CanActivateFn = () => {
 const routes: Routes = [
   { path: 'login', component: LoginComponent },
   { path: 'create-account', component: CreateAccountComponent },
-  { path: 'gallery', component: CreateAccountComponent },
-  { path: 'device', component: CreateAccountComponent },
+  { path: 'gallery', component: ImageGalleryComponent },
+  { path: 'device', component: DeviceComponent },
   //{
     //path: 'components',
     //canActivate: [checkAuth],  // Use function to protect routes
