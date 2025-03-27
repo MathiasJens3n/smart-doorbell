@@ -1,17 +1,27 @@
-﻿using MySqlConnector;
+﻿using Microsoft.Extensions.Configuration;
+using MySqlConnector;
 using smart_doorbell_api.Factories.Interfaces;
 using System.Data;
+using System.Runtime.InteropServices;
 
 namespace smart_doorbell_api.Factories
 {
     public class MySqlConnectionFactory : IDbConnectionFactory
     {
         private readonly string _connectionString;
-        public MySqlConnectionFactory(string connectionString)
+        public MySqlConnectionFactory(IConfiguration configuration)
         {
-            ArgumentNullException.ThrowIfNull(connectionString);
+            ArgumentNullException.ThrowIfNull(configuration);
 
-            _connectionString = connectionString;
+            // Detect OS and pick the appropriate connection string
+            if (RuntimeInformation.IsOSPlatform(OSPlatform.Linux))
+            {
+                _connectionString = configuration.GetConnectionString("LinuxConnection");
+            }
+            else
+            {
+                _connectionString = configuration.GetConnectionString("DefaultConnection");
+            }
         }
         public IDbConnection CreateConnection()
         {

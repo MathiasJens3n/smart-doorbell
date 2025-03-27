@@ -63,7 +63,7 @@ builder.Services.AddOpenApi();
 // Register JwtService with the secret
 builder.Services.AddSingleton(new JwtService(jwtSecret));
 
-builder.Services.AddSingleton<IDbConnectionFactory>(new MySqlConnectionFactory(connectionString));
+builder.Services.AddSingleton<IDbConnectionFactory, MySqlConnectionFactory>();
 builder.Services.AddScoped<IDeviceRepository, DeviceRepository>();
 builder.Services.AddScoped<DeviceService>();
 builder.Services.AddScoped<IUserRepository, UserRepository>();

@@ -17,18 +17,23 @@ namespace smart_doorbell_api.Services
 
         public NotificationService(IConfiguration configuration, IUserRepository userRepository, ILogger<NotificationService> logger)
         {
-            string? credentialsPath = configuration["Firebase:CredentialsPath"];
+            string? relativePath = configuration["Firebase:CredentialsPath"];
+            string fullPath = Path.Combine(AppContext.BaseDirectory, relativePath ?? "");
 
-            if (string.IsNullOrEmpty(credentialsPath))
+
+            if (!File.Exists(fullPath))
             {
-                throw new InvalidOperationException("Firebase credentials path is missing in appsettings.json.");
+                throw new FileNotFoundException("Firebase credentials file not found.", fullPath);
             }
+
+
+
 
             if (FirebaseApp.DefaultInstance == null)
             {
                 FirebaseApp.Create(new AppOptions
                 {
-                    Credential = GoogleCredential.FromFile(credentialsPath)
+                    Credential = GoogleCredential.FromFile(fullPath)
                 });
             }
 
