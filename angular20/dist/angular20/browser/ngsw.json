@@ -1,6 +1,6 @@
 {
   "configVersion": 1,
-  "timestamp": 1743064175701,
+  "timestamp": 1743072019573,
   "index": "/index.html",
   "assetGroups": [
     {
@@ -14,7 +14,7 @@
         "/favicon.ico",
         "/firebase-messaging-sw.js",
         "/index.html",
-        "/main-VECTFKM3.js",
+        "/main-AGIQ74D2.js",
         "/manifest.webmanifest",
         "/polyfills-FFHMD2TL.js",
         "/styles-E73UGZID.css"
@@ -29,6 +29,7 @@
         "ignoreVary": true
       },
       "urls": [
+        "/assets/download.jpg",
         "/icons/128.png",
         "/icons/144.png",
         "/icons/154.png",
@@ -43,6 +44,7 @@
   ],
   "dataGroups": [],
   "hashTable": {
+    "/assets/download.jpg": "8c5884f01f8c245f866a1e52f534cc18d0f6851b",
     "/favicon.ico": "9c39f434fe1261f68c5e3eefdf734630d99c5670",
     "/firebase-messaging-sw.js": "35dc1e722be4c1e533ff2c6a389c8d13fb8e9777",
     "/icons/128.png": "c2f61e9d4c71ba5420fa26f3d089b02c6fbb5d8c",
@@ -53,8 +55,8 @@
     "/icons/512.png": "630e6e9457344dcc0a439305bea9895c822ef2e2",
     "/icons/72.png": "b27e9c7b7995c83697c683a239c39eb598ceb7c0",
     "/icons/96.png": "ba186aa1b2cd524cf19824dc3d9cafe25ad71a87",
-    "/index.html": "257b54bf195b6f2ad122fbd9354ca39450af5e32",
-    "/main-VECTFKM3.js": "aef200ed9a105293dc24bb31aa94bb9ed2461038",
+    "/index.html": "d4c1aadfe76bdd87357e0da9156d428f22914043",
+    "/main-AGIQ74D2.js": "d75351639633c4068b73c271f9705421907ab73e",
     "/manifest.webmanifest": "616e93c0714f9a53508b531919d552914368759d",
     "/polyfills-FFHMD2TL.js": "f49b49a155bc7d192db62a4c15d0a612b460a667",
     "/styles-E73UGZID.css": "97a3a91359510e532588062a718ac90c49a98168"
