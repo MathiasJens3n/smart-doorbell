@@ -6,7 +6,7 @@ import { ImageGalleryComponent } from './Components/image-gallery/image-gallery.
 import { DeviceComponent } from './Components/device/device.component';
 
 export const checkAuth: CanActivateFn = () => {
-  return !!sessionStorage.getItem('Token'); // Returns true if 'Token' exists, otherwise false
+  return !! sessionStorage.getItem('Token'); // Returns true if 'Token' exists, otherwise false
 };
 
 

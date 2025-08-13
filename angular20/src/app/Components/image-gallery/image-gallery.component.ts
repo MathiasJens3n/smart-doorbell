@@ -51,6 +51,7 @@ export class ImageGalleryComponent implements OnInit {
     this.imageGalleryService.GetImages().subscribe({
       next: (images) => {
         this.ImageArray = images;
+        console.log(images);
 
         // Sanitize each Base64 image URL
         this.ImageArray.forEach(image => {
